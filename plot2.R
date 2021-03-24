@@ -9,9 +9,7 @@
 setwd("~/Desktop/Coursera_R/Exploratory_Data_Analysis/wk1_Assignment")
 unzip("exdata_data_household_power_consumption.zip")
 Filename <- "household_power_consumption.txt"
-# Reading the TXT file into R; set the characters of the first row as column names 
-Colnames <- scan(text = readLines(Filename,1), sep = ";", what = "", quiet = TRUE)
-data <- read.table(Filename, sep = ";", col.names = Colnames, skip = 1)
+data <- read.table(Filename, stringsAsFactors = FALSE, header = TRUE, sep =";")
 # Create a Time variable to be plotted on
 data$TimeCombo <- strptime(paste(data$Date, data$Time, sep = " "), format = "%d/%m/%Y %H:%M:%S")
 # Convert variables to correct classes
